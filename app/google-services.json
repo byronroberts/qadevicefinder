@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "617780936937",
+    "firebase_url": "https://qadevicefinder.firebaseio.com",
+    "project_id": "qadevicefinder",
+    "storage_bucket": "qadevicefinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617780936937:android:5b0231df3456ddc9",
+        "android_client_info": {
+          "package_name": "uk.co.autotrader.qadevicefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617780936937-v4r36rlhv0u8og1jaekcul5q5aijcq3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrqW3s-3Xtkzf0E3sRMvChYDFhl5jdLNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617780936937-v4r36rlhv0u8og1jaekcul5q5aijcq3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
