@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
@@ -14,7 +15,11 @@ class ScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
 
     private lateinit var scannerView: ZXingScannerView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         scannerView = ZXingScannerView(activity)
         return scannerView
     }
@@ -35,7 +40,8 @@ class ScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
         val text = rawResult?.text as CharSequence
         view?.let { Snackbar.make(it, text, Snackbar.LENGTH_LONG) }
         scannerView.stopCamera()
+        val action = ScannerFragmentDirections.addDeviceAction(text.toString())
+        view?.findNavController()?.navigate(action)
     }
-
 
 }

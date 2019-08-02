@@ -15,11 +15,24 @@
         android:id="@+id/navigation_scanner"
         android:name="roberts.byron.qadevicefinder.ui.dashboard.ScannerFragment"
         android:label="@string/title_scanner"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/addDeviceAction"
+            app:destination="@id/addDeviceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_loaned_out"
         android:name="roberts.byron.qadevicefinder.ui.notifications.LoanedOutFragment"
         android:label="@string/title_loaned_out"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/addDeviceFragment"
+        android:name="roberts.byron.qadevicefinder.ui.AddDeviceFragment"
+        android:label="AddDeviceFragment" >
+        <argument
+            android:name="barcode"
+            app:argType="string" />
+    </fragment>
 </navigation>
