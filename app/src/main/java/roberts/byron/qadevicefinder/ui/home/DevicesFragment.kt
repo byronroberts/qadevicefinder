@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.FirebaseDatabase
 import roberts.byron.qadevicefinder.R
-import roberts.byron.qadevicefinder.domain.Device
-import roberts.byron.qadevicefinder.domain.OperatingSystem
 
 class DevicesFragment : Fragment() {
 
@@ -24,19 +21,4 @@ class DevicesFragment : Fragment() {
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val device = Device(
-            "1234",
-            "someUrl",
-            "OnePlus 7",
-            OperatingSystem.ANDROID,
-            "6.0",
-            "Byron Roberts",
-            "2019-02-08"
-        )
-        val database = FirebaseDatabase.getInstance().reference
-        database.child("devices").push().setValue(device)
-    }
 }

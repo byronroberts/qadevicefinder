@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="Add a device"
     app:startDestination="@+id/navigation_devices">
 
     <fragment
@@ -15,7 +16,7 @@
         android:id="@+id/navigation_scanner"
         android:name="roberts.byron.qadevicefinder.ui.dashboard.ScannerFragment"
         android:label="@string/title_scanner"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/addDeviceAction"
             app:destination="@id/addDeviceFragment"
@@ -30,7 +31,7 @@
     <fragment
         android:id="@+id/addDeviceFragment"
         android:name="roberts.byron.qadevicefinder.ui.AddDeviceFragment"
-        android:label="AddDeviceFragment" >
+        android:label="Add a device">
         <argument
             android:name="barcode"
             app:argType="string" />
