@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_add_device.*
 import roberts.byron.qadevicefinder.R
 import roberts.byron.qadevicefinder.domain.Device
@@ -33,7 +33,7 @@ class AddDeviceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         deviceBarcode?.text = args.barcode
         addDeviceFab?.setOnClickListener(doneClickListener)
-        databaseReference.addValueEventListener(valueEventListener)
+        databaseReference.addChildEventListener(childEventListener)
     }
 
     private val doneClickListener = View.OnClickListener {
@@ -45,7 +45,6 @@ class AddDeviceFragment : Fragment() {
         )
 
         databaseReference.child("devices").child(args.barcode).setValue(device)
-        fragmentManager?.popBackStack()
     }
 
     private fun getOperatingSystem(): OperatingSystem? {
@@ -56,10 +55,13 @@ class AddDeviceFragment : Fragment() {
         }
     }
 
-    private val valueEventListener = object : ValueEventListener {
+    private val childEventListener = object : ChildEventListener {
         override fun onCancelled(databaseError: DatabaseError) {}
+        override fun onChildMoved(p0: DataSnapshot, p1: String?) {}
+        override fun onChildRemoved(p0: DataSnapshot) {}
+        override fun onChildChanged(p0: DataSnapshot, p1: String?) {}
 
-        override fun onDataChange(dataSnapshot: DataSnapshot) {
+        override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
             val device = dataSnapshot.getValue(Device::class.java)
             view?.let {
                 Snackbar.make(
@@ -68,6 +70,7 @@ class AddDeviceFragment : Fragment() {
                     Snackbar.LENGTH_LONG
                 )
             }
+            fragmentManager?.popBackStack()
         }
     }
 
